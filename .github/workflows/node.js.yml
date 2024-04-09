@@ -1,0 +1,24 @@
+# Khai báo tên workflow
+name: Node.js CI 
+
+# Workflow được kích hoạt khi có sự kiện push vào nhánh main hoặc pull request vào nhánh main
+on:
+  push: 
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+# Các bước thực hiện của workflow 
+steps:
+  - uses: actions/checkout@v3
+  - name: Use Node.JS ${{ matrix.node-version }}
+    uses: actions/setup-node@v1
+    with: 
+      node-version: ${{ matrix.node-version }}
+  - run: 
+    npm i
+    npm run build
