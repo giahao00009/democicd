@@ -20,5 +20,5 @@ steps:
     with: 
       node-version: ${{ matrix.node-version }}
   - run: |
-    npm i
-    npm run build
+      npm i
+      npm run build
